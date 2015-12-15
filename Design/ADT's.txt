@@ -1,0 +1,19 @@
+spec simpleBST
+ genres simpleBST, simpleNode, integer
+ operations
+   insert: simpleBST integer -> simpleBST
+   extract: simpleBST integer -> simpleBST
+   makenull: simpleBST -> simpleBST
+   empty: simpleBST -> boolean
+   list: simpleBST -> string
+endspec
+
+spec complexBST
+ genres complexBST, complexNode, integer
+ operations
+   insert: simpleBST integer -> simpleBST
+   extract: simpleBST integer -> simpleBST
+   makenull: simpleBST -> simpleBST
+   empty: simpleBST -> boolean
+   list: simpleBST -> string
+endspec
