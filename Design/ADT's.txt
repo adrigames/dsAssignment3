@@ -1,7 +1,7 @@
 spec simpleBST
  genres simpleBST, simpleNode, integer
  operations
-   insert: simpleBST integer -> simpleBST
+   insert: simpleBST integer simpleNode -> simpleBST
    delete: simpleBST simpleNode -> simpleBST
    search: simpleBST integer -> simpleNode
    list: simpleBST -> string
@@ -10,7 +10,7 @@ endspec
 spec complexBST
  genres complexBST, complexNode, integer
  operations
-   insert: complexBST integer -> complexBST
+   insert: complexBST integer complexNode -> complexBST
    search: complexBST complexNode -> complexNode
    delete: complexBST integer -> complexBST
    list: complexBST -> string
