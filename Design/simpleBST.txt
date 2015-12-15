@@ -1,0 +1,14 @@
+simpleNode = register
+  label = integer
+  times = integer
+  leftChild = ^simpleNode
+  rightChild = ^simpleNode
+endregister
+
+class simpleBST
+  private root: ^simpleNode
+  public void insert(l: integer)
+  public void delete(n: simpleNode)
+  public simpleNode search(l: integer)
+  public string list()
+endclass
