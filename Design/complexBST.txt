@@ -1,14 +1,15 @@
-simpleNode = register
+complexNode = register
   label = integer
-  times = integer
-  leftChild = ^simpleNode
-  rightChild = ^simpleNode
+  posTimes = integer
+  negTimes = integer
+  leftChild = ^complexNode
+  rightChild = ^complexNode
 endregister
 
 class simpleBST
-  private root: ^simpleNode
-  private integer[] deleteMin(n:^simpleNode)
-  public void insert(l: integer, n: ^simpleNode)
+  private root: ^complexNode
+  private integer[] deleteMin(n:^complexNode)
+  public void insert(l: integer, n: ^complexNode)
   public void delete(l: integer, n: ^simpleNode)
   public boolean search(l: integer, n: ^simpleNode)
   public string list()
