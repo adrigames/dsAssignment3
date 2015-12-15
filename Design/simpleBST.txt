@@ -43,6 +43,7 @@ private integer[] simpleBST::deleteMin(n: ^simpleNode)
 endmethod
 
 public void simpleBST::delete(l: integer, n: ^simpleNode)
+	aux: integer[]
 	if n != null then
 		if l < n^.label then
 			delete(l, n^.leftChild)
@@ -64,7 +65,9 @@ public void simpleBST::delete(l: integer, n: ^simpleNode)
 				endif
 			else
 				if n^.times <= 0 then
-					n^.element := deleteMin(n^.rightChild)
+					aux := deleteMin(n^.rightChild)
+					n^.element := aux[1]
+					n^.times := aux[2]
 				endif
 		endif
 endmethod

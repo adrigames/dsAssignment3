@@ -63,6 +63,7 @@ endmethod
 public void simpleBST::delete(l: integer, n: ^complexNode)
 	neg: boolean
 	aux: integer
+	aux2: integer[]
 	if l<0 then
 		aux := -l
 		neg := true
@@ -88,7 +89,10 @@ public void simpleBST::delete(l: integer, n: ^complexNode)
 				else if n^.rightChild = null then
 					n := n^.leftChild
 				else
-					n^.element := deleteMin(n^.rightChild)
+					aux2 := deleteMin(n^.rightChild)
+					n^.label := aux[1]
+					n^.posTimes := aux[2]
+					n^.negTimes := aux[3]
 				endif
 			endif
 endmethod
