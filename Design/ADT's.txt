@@ -2,7 +2,7 @@ spec simpleBST
  genres simpleBST, simpleNode, integer
  operations
    insert: simpleBST integer simpleNode -> simpleBST
-   delete: simpleBST simpleNode -> simpleBST
+   delete: simpleBST integer simpleNode -> simpleBST
    search: simpleBST integer -> simpleNode
    list: simpleBST -> string
 endspec
