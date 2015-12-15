@@ -3,7 +3,7 @@ spec simpleBST
  operations
    insert: simpleBST integer simpleNode -> simpleBST
    delete: simpleBST integer simpleNode -> simpleBST
-   search: simpleBST integer -> simpleNode
+   search: simpleBST integer -> boolean
    list: simpleBST -> string
 endspec
 
@@ -12,6 +12,6 @@ spec complexBST
  operations
    insert: complexBST integer complexNode -> complexBST
    search: complexBST complexNode -> complexNode
-   delete: complexBST integer -> complexBST
+   delete: complexBST integer -> boolean
    list: complexBST -> string
 endspec
