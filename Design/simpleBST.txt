@@ -80,3 +80,25 @@ public boolean simpleBST::search(l: integer, n: ^simpleNode)
 	else if l>n^.element then
 		return search(l, n^.rightChild)
 endMethod
+
+public string simpleBST::list(n:^simpleNode)
+	neg: boolean
+	neg := n^.label < 0
+	if n^.leftChild = null and n^.rightChild = null then
+		if neg then
+			return string("-"+n^.value+", "+n^.times+" times; ")
+		else
+			return string("+"+n^.value+", "+n^.times+" times; ")
+		endif
+	else if n^.rightchild = null then
+		str: string
+		str = list(n^.leftchild)
+		if neg then
+			return str + string("-"+n^.value+", "+n^.times+" times;")
+		else
+			return str + string("-"+n^.value+", "+n^.times+" times;")
+	else
+		str: string
+		str = list(n^.leftchild)
+		if neg then
+			return str + string("-"+n^.value+,", "+n^.times+" times;") + list(n^.rightchild)
