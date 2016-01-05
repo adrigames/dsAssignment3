@@ -102,3 +102,4 @@ public string simpleBST::list(n:^simpleNode)
 		str = list(n^.leftchild)
 		if neg then
 			return str + string("-"+n^.value+,", "+n^.times+" times;") + list(n^.rightchild)
+endmethod
