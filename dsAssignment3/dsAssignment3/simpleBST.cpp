@@ -26,21 +26,44 @@ int[] simpleBST::deleteMin(simpleNode* n)
 
 void simpleBST::insert(int value, simpleNode* n)
 {
-    if(n == NULL)
+    bool neg = (value < 0);
+    if(!neg)
+        {
+        if(n == NULL)
+        {
+            n = simpleNode(value);
+            }
+        else if(value < n->getLabel())
+        {
+            insert(value, n->getLeftChild());
+            }
+        else if(value > n->getLabel())
+        {
+            insert(value, n->getRightChild());
+            }
+        else if(value == n->getLabel())
+        {
+            n->increaseTimes();
+            }
+    }
+    else
     {
-        n = simpleNode(value);
-        }
-    else if(value < n->getLabel())
-    {
-        insert(value, n->getLeftChild());
-        }
-    else if(value > n->getLabel())
-    {
-        insert(value, n->getRightChild());
-        }
-    else if(value == n->getLabel())
-    {
-        n->increaseTimes();
+        if(n == NULL)
+        {
+            n = simpleNode(value);
+            }
+        else if(-value < -n->getLabel())
+        {
+            insert(value, n->getLeftChild());
+            }
+        else if(-value > -n->getLabel())
+        {
+            insert(value, n->getRightChild());
+            }
+        else if(-value == -n->getLabel())
+        {
+            n->increaseTimes();
+            }
         }
     }
     
@@ -88,4 +111,32 @@ bool simpleBST::search(int value, simpleNode* n)
     {
         return search(value, n->getRightChild());
         }
+    }
+
+std::string simpleBST::list(simpleNode* n)
+{
+    bool neg = (n->getLabel() < 0);
+    if(n->getLeftChild() == NULL && n->getRightChild() == NULL)
+    {
+        if(neg)
+            return "\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
+        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
+        }
+    else if(n->getRightChild() == NULL)
+    {
+        if(neg)
+            return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
+        else return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
+        }
+    else if(n->getLeftChild() == NULL)
+    {
+        if(neg)
+            return "\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
+        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
+        }
+    else if(n->getLeftChild() != NULL && n->getRightChild() != NULL)
+        if(neg)
+            return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
+        else
+            return this->list(n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
     }

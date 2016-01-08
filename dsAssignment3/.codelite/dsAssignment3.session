@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session Name="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3.workspace">
+  <int Value="5" Name="m_selectedTab"/>
+  <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3.workspace" Name="m_workspaceName"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\simpleNode.hpp" Name="FileName"/>
+      <int Value="3" Name="FirstVisibleLine"/>
+      <int Value="17" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\simpleNode.cpp" Name="FileName"/>
+      <int Value="27" Name="FirstVisibleLine"/>
+      <int Value="41" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\complexNode.hpp" Name="FileName"/>
+      <int Value="4" Name="FirstVisibleLine"/>
+      <int Value="23" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\complexNode.cpp" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="14" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\simpleBST.hpp" Name="FileName"/>
+      <int Value="1" Name="FirstVisibleLine"/>
+      <int Value="9" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\simpleBST.cpp" Name="FileName"/>
+      <int Value="64" Name="FirstVisibleLine"/>
+      <int Value="113" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+  </TabInfoArray>
+  <SerializedObject Name="m_breakpoints">
+    <long Value="0" Name="Count"/>
+  </SerializedObject>
+</Session>
