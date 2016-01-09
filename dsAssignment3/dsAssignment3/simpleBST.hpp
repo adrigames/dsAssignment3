@@ -15,7 +15,6 @@ public:
     void Delete(int, simpleNode*);
     bool search(int, simpleNode*);
     std::string list(simpleNode*);
-    std::string listSave();
 
 };
 

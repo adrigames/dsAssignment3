@@ -16,6 +16,9 @@ public:
     int getNegTimes();
     complexNode* getLeftChild();
     complexNode* getRightChild();
+    void setLabel(int);
+    void setPosTimes(int);
+    void setNegTimes(int);
     void increasePosTimes();
     void decreasePosTimes();
     void increaseNegTimes();

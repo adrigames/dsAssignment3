@@ -119,24 +119,24 @@ std::string simpleBST::list(simpleNode* n)
     if(n->getLeftChild() == NULL && n->getRightChild() == NULL)
     {
         if(neg)
-            return "\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
-        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
+            return "\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n";
+        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n";
         }
     else if(n->getRightChild() == NULL)
     {
         if(neg)
-            return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
-        else return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n";
+            return this->list(n->getLeftChild())<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times times\n";
+        else return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n";
         }
     else if(n->getLeftChild() == NULL)
     {
         if(neg)
-            return "\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
-        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
+            return "\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
         }
     else if(n->getLeftChild() != NULL && n->getRightChild() != NULL)
         if(neg)
-            return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
+            return this->list(n->getLeftChild())<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
         else
-            return this->list(n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<"\n"<<this->list(n->getRightChild());
+            return this->list(n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
     }

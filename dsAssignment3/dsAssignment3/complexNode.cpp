@@ -47,6 +47,21 @@ complexNode* complexNode::getRightChild()
     return this.rightChild;
     }
 
+void complexNode::setLabel(int label)
+{
+    this->label = label;
+    }
+
+void complexNode::setPosTimes(int times)
+{
+    this->posTimes = times;
+    }
+
+void complexNode::setNegTimes(int times)
+{
+    this->negTimes = times;
+    }
+
 void complexNode::increasePosTimes()
 {
     this.posTimes++;
