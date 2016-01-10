@@ -25,54 +25,82 @@ int[] complexBST::deleteMin(complexNode* n)
         }
     }
 
+complexNode* complexBST::getRoot()
+{
+    return this->root;
+    }
+
 std::string complexBST::createList(bool neg, complexNode* n)
 //This function is used to create strings in a fashion similar to that implemented in the simpleBST class
 {
+    std::stringstream stream;
     if(n->getLeftChild() == NULL && n->getRightChild() == NULL)
     {
         if(neg)
             if(n->getNegTimes()>0)
-                return "\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
-            else return "";
+            {
+                stream<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
+                return stream.str();
+            }
+            else return stream.str().clear();       //Return an empty string
         else
             if(n->getPosTimes()>0)
-                return "\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
+            {
+                stream<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
+                return stream.str();                //Return an empty string
+            }
             else return "";
         }
     else if(n->getRightChild() == NULL)
     {
         if(neg)
             if(n->getNegTimes()>0)
-                return createList(neg, n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
+            {
+                stream<<createList(neg, n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
+                return stream.str();
+            }
             else return createList(neg, n->getLeftChild());
         else
             if(n->getPosTimes()>0)
-                return createList(neg, n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
+            {
+                stream<<createList(neg, n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
+                return stream.str();
+            }
             else return createList(neg, n->getLeftChild());
         }
     else if(n->getLeftChild() == NULL)
     {
         if(neg)
             if(n->getNegTimes()>0)
-                return "\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n"<<createList(neg, n->getRightChild());
+            {
+                stream<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n"<<createList(neg, n->getRightChild());
+                return stream.str();
+            }
             else return createList(neg, n->getRightChild());
         else
             if(n->getPosTimes()>0)
-                return "\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n"<<createList(neg, n->getRightChild());
+            {
+                stream<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n"<<createList(neg, n->getRightChild());
+                return stream.str();
+            }
             else return createList(neg, n->getRightChild());
         }
     else if(n->getLeftChild() != NULL && n->getRightChild() != NULL)
     {
         if(neg)
-            if(n->getNegTimes()>0)
-                return createList(neg, n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "\
+            if(n->getNegTimes()>0){
+                stream<<createList(neg, n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "\
                 <<n->getNegTimes()<<" times\n"<<createList(neg, n->getRightChild());
-            else return createList(neg, n->getLeftChild())<<createList(neg, n->getRightChild());
+                return stream.str();
+            }
+            else return createList(neg, n->getLeftChild())+createList(neg, n->getRightChild());
         else
-            if(n->getPosTimes()>0)
-                return createList(neg, n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "\
+            if(n->getPosTimes()>0){
+                stream<<createList(neg, n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "\
                 <<n->getPosTimes()<<" times\n"<<createList(neg, n->getRightChild());
-            else return createList(neg, n->getLeftChild())<<createList(neg, n->getRightChild());
+                return stream.str();
+            }
+            else return createList(neg, n->getLeftChild())+createList(neg, n->getRightChild());
         }
     }
 
@@ -207,6 +235,35 @@ std::string complexBST::list(complexNode* n)
     }
 
 std::string complexBST::listSave(complexNode* n)
+// Create save string
 {
-    std::string result = "";
+    std::stringstream stream;
+    int i = 0;
+    if(n->getLeftChild() != NULL)
+        stream<<this->listSave(n->getLeftChild());
+    if(n->getPosTimes()>0)
+        {
+            for(i=0; i<=n->getPosTimes();i++)
+            {
+                stream<<n->getLabel();
+                if(i == n->getPosTimes() && n->getNegTimes() <= 0)
+                    stream<<".\n";
+                else
+                    stream<<',';
+                }
+            }
+        if(n->getNegTimes()>0)
+        {
+            for(i=0; i<=n->getNegTimes(); i++)
+            {
+                stream<<-n->getLabel();
+                if(i == n->getNegTimes())
+                    stream<<".\n";
+                else
+                    stream<<',';
+                }
+            }
+        if(n->getRightChild() != NULL)
+            stream<<this->listSave(n->getRightChild());
+        return stream.str();
     }

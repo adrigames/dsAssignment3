@@ -3,6 +3,7 @@
 
 #include "simpleNode.hpp"
 #include <string>
+#include <sstream>
 
 class simpleBST
 {
@@ -11,6 +12,7 @@ class simpleBST
 public:
     simpleBST();
     ~simpleBST();
+    simpleNode* getRoot();
     void insert(int, simpleNode*);
     void Delete(int, simpleNode*);
     bool search(int, simpleNode*);

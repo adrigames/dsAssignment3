@@ -2,6 +2,7 @@
 #define COMPLEXBST_HPP
 
 #include <string>
+#include <sstream>
 #include "complexNode.hpp"
 
 class complexBST
@@ -12,6 +13,7 @@ class complexBST
 public:
     complexBST();
     ~complexBST();
+    complexNode* getRoot();
     void insert(int, complexNode*);
     void Delete(int, complexNode*);
     bool search(int, complexNode*);

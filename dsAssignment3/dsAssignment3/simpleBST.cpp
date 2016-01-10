@@ -24,6 +24,11 @@ int[] simpleBST::deleteMin(simpleNode* n)
         }
     }
 
+simpleNode* simpleBST::getRoot()
+{
+    return this->root;
+    }
+
 void simpleBST::insert(int value, simpleNode* n)
 {
     bool neg = (value < 0);
@@ -116,27 +121,51 @@ bool simpleBST::search(int value, simpleNode* n)
 std::string simpleBST::list(simpleNode* n)
 {
     bool neg = (n->getLabel() < 0);
+    std::stringstream stream;
     if(n->getLeftChild() == NULL && n->getRightChild() == NULL)
     {
-        if(neg)
-            return "\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n";
-        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n";
+        if(neg){
+            stream<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n";
+            return stream.str();
+        }
+        else{
+            stream<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n";
+            return stream.str();
+        }
         }
     else if(n->getRightChild() == NULL)
     {
-        if(neg)
-            return this->list(n->getLeftChild())<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times times\n";
-        else return this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n";
+        if(neg){
+            stream<<this->list(n->getLeftChild())<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times times\n";
+            return stream.str();
+        }
+        else{
+            stream<<this->list(n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n";
+            return stream.str();
+        }
         }
     else if(n->getLeftChild() == NULL)
     {
         if(neg)
-            return "\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
-        else return "\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+        {
+            stream<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+            return stream.str();
+        }
+        else 
+            {
+            stream<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+            return stream.str();
+        }
         }
     else if(n->getLeftChild() != NULL && n->getRightChild() != NULL)
         if(neg)
-            return this->list(n->getLeftChild())<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+        {
+            stream<<this->list(n->getLeftChild())<<"\"-\""<<-n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+            return stream.str();
+        }
         else
-            return this->list(n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+        {
+            stream<<this->list(n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getTimes()<<" times\n"<<this->list(n->getRightChild());
+            return stream.str();
+        }
     }

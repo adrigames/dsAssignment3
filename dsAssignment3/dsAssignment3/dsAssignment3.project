@@ -100,5 +100,7 @@
     <File Name="simpleBST.cpp"/>
     <File Name="complexBST.hpp"/>
     <File Name="complexBST.cpp"/>
+    <File Name="IOHandler.hpp"/>
+    <File Name="IOHandler.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>
