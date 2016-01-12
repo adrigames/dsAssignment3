@@ -1,6 +1,7 @@
 #ifndef COMPLEXNODE_HPP
 #define COMPLEXNODE_HPP
 
+#include <cstddef>
 class complexNode
 {
     int label;
@@ -14,8 +15,8 @@ public:
     int getLabel();
     int getPosTimes();
     int getNegTimes();
-    complexNode* getLeftChild();
-    complexNode* getRightChild();
+    complexNode** getLeftChild();
+    complexNode** getRightChild();
     void setLabel(int);
     void setPosTimes(int);
     void setNegTimes(int);

@@ -1,6 +1,7 @@
 #ifndef SIMPLENODE_HPP
 #define SIMPLENODE_HPP
 
+#include <cstddef>
 class simpleNode
 {
     int label;
@@ -12,8 +13,8 @@ public:
     ~simpleNode();
     int getLabel();
     int getTimes();
-    simpleNode* getLeftChild();
-    simpleNode* getRightChild();
+    simpleNode** getLeftChild();
+    simpleNode** getRightChild();
     void setLabel(int);
     void setTimes(int);
     void increaseTimes();

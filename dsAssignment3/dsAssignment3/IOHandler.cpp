@@ -17,7 +17,7 @@ void IOHandler::save()
 {
     std::ofstream output;
     std::string data = "";
-    data += this->complex->listSave(complex->getRoot());
+    data += this->complex->listSave(*complex->getRoot());
     output.open("output.numbers.txt");      //Write to file
     if(output.is_open())
     {
@@ -59,22 +59,31 @@ void IOHandler::load()
                 aux = 0;                                //Not an integer
             else
                 {
-                    this->processNumber(aux);           //If converted to integer, process it
+                    this->processNumber(aux, false);           //If converted to integer, process it
                     }
             }
         }
     }
     }
 
-void IOHandler::processNumber(int value)
+void IOHandler::processNumber(int value, bool complex)
 {
-    if (value<0)                        //Check if value is negative
+    if(!complex){                           //Check for storage system
+        //If simple organization
+        if (value<0)                        //Check if value is negative
+            {
+                simpleNode* aux = new simpleNode(value);
+                this->negative->insert(this->negative->getRoot(), aux);   //Insert in negative BST
+                }
+        else                                //Number is positive
         {
-            this->negative->insert(value, this->negative->getRoot());   //Insert in negative BST
+            simpleNode* aux = new simpleNode(value);
+            this->positive->insert(this->positive->getRoot(), aux);       //Insert in positive BST
             }
-    else                                //Number is positive
-    {
-        this->positive->insert(value, this->positive->getRoot());       //Insert in positive BST
-        }
-    this->complex->insert(value, this->complex->getRoot());     //Whatever the case, insert in complex
     }
+    else                                    //If complex organization
+    {
+        complexNode* aux = new complexNode(value);
+        this->complex->insert(this->complex->getRoot(), aux);     //Whatever the case, insert in complex
+    }
+}

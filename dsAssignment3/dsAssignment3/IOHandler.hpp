@@ -2,7 +2,9 @@
 #define IOHANDLER_HPP
 
 #include "simpleBST.hpp"
+#include "simpleNode.hpp"
 #include "complexBST.hpp"
+#include "complexNode.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -19,7 +21,7 @@ public:
     ~IOHandler();
     void save();
     void load();
-    void processNumber(int);
+    void processNumber(int, bool);
 };
 
 #endif // IOHANDLER_HPP

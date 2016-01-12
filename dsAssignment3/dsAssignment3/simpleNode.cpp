@@ -2,10 +2,10 @@
 
 simpleNode::simpleNode(int label)
 {
-    this.label = label;
-    this.times = times;
-    this.leftChild = NULL;
-    this.rightChild = NULL;
+    this->label = label;
+    this->times = 1;
+    this->leftChild = NULL;
+    this->rightChild = NULL;
 }
 
 simpleNode::~simpleNode()
@@ -14,50 +14,50 @@ simpleNode::~simpleNode()
 
 int simpleNode::getLabel()
 {
-    return this.label;
+    return this->label;
     }
 
 int simpleNode::getTimes()
 {
-    return this.times;
+    return this->times;
     }
 
-simpleNode* simpleNode::getLeftChild()
+simpleNode** simpleNode::getLeftChild()
 {
-    return this.leftChild;
+    return &this->leftChild;
     }
 
-simpleNode* simpleNode::getRightChild()
+simpleNode** simpleNode::getRightChild()
 {
-    return this.rightChild;
+    return &this->rightChild;
     }
 
 void simpleNode::setLabel(int label)
 {
-    this.label = label;
+    this->label = label;
     }
 
 void simpleNode::setTimes(int times)
 {
-    this.times = times;
+    this->times = times;
     }
 
 void simpleNode::increaseTimes()
 {
-    this.times++;
+    this->times++;
     }
 
 void simpleNode::decreaseTimes()
 {
-    this.times--;
+    this->times--;
     }
 
 void simpleNode::setLeftChild(simpleNode* leftChild)
 {
-    this.leftChild = leftChild;
+    this->leftChild = leftChild;
     }
 
 void simpleNode::setRightChild(simpleNode* rightChild)
 {
-    this.rightChild = rightChild;
+    this->rightChild = rightChild;
     }

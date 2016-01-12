@@ -4,20 +4,24 @@
 #include "simpleNode.hpp"
 #include <string>
 #include <sstream>
+#include <cstddef>
+#include <stdexcept>
+
+#include <iostream>
 
 class simpleBST
 {
     simpleNode* root;
-    int[] deleteMin(simpleNode*);
+    void deleteMin(int[], simpleNode**);
 public:
     simpleBST();
     ~simpleBST();
-    simpleNode* getRoot();
-    void insert(int, simpleNode*);
-    void Delete(int, simpleNode*);
+    simpleNode** getRoot();
+    void insert(simpleNode**, simpleNode*);
+    void Delete(int, simpleNode**);
     bool search(int, simpleNode*);
     std::string list(simpleNode*);
-
+    void getNode(int[], simpleNode**);
 };
 
 #endif // SIMPLEBST_HPP

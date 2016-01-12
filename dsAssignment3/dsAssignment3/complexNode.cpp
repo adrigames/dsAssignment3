@@ -4,18 +4,18 @@ complexNode::complexNode(int value)
 {
     if(value < 0)
     {
-        this.label = -value;
-        this.negTimes = 1;
-        this.posTimes = 0;
+        this->label = -value;
+        this->negTimes = 1;
+        this->posTimes = 0;
         }
     else
     {
-        this.label = value;
-        this.posTimes = 1;
-        this.negTimes = 0;
+        this->label = value;
+        this->posTimes = 1;
+        this->negTimes = 0;
         }
-    this.leftChild = NULL;
-    this.rightChild = NULL;
+    this->leftChild = NULL;
+    this->rightChild = NULL;
 }
 
 complexNode::~complexNode()
@@ -24,27 +24,27 @@ complexNode::~complexNode()
 
 int complexNode::getLabel()
 {
-    return this.label;
+    return this->label;
     }
 
 int complexNode::getPosTimes()
 {
-    return this.posTimes;
+    return this->posTimes;
     }
 
 int complexNode::getNegTimes()
 {
-    return this.negTimes();
+    return this->negTimes;
     }
 
-complexNode* complexNode::getLeftChild()
+complexNode** complexNode::getLeftChild()
 {
-    return this.leftChild;
+    return &this->leftChild;
     }
 
-complexNode* complexNode::getRightChild()
+complexNode** complexNode::getRightChild()
 {
-    return this.rightChild;
+    return &this->rightChild;
     }
 
 void complexNode::setLabel(int label)
@@ -64,30 +64,30 @@ void complexNode::setNegTimes(int times)
 
 void complexNode::increasePosTimes()
 {
-    this.posTimes++;
+    this->posTimes++;
     }
 
 void complexNode::decreasePosTimes()
 {
-    this.posTimes--;
+    this->posTimes--;
     }
 
 void complexNode::increaseNegTimes()
 {
-    this.negTimes++;
+    this->negTimes++;
     }
 
 void complexNode::decreaseNegTimes()
 {
-    this.negTimes--;
+    this->negTimes--;
     }
 
 void complexNode::setLeftChild(complexNode* leftChild)
 {
-    this.leftChild = leftChild;
+    this->leftChild = leftChild;
     }
 
 void complexNode::setRightChild(complexNode* rightChild)
 {
-    this.rightChild = rightChild;
+    this->rightChild = rightChild;
     }

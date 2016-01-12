@@ -1,0 +1,1 @@
+./Debug/main.cpp.o ./Debug/simpleNode.cpp.o ./Debug/complexNode.cpp.o ./Debug/simpleBST.cpp.o ./Debug/complexBST.cpp.o ./Debug/IOHandler.cpp.o ./Debug/MainHandler.cpp.o   

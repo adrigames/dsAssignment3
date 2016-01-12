@@ -1,47 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3.workspace">
-  <int Value="3" Name="m_selectedTab"/>
+  <int Value="5" Name="m_selectedTab"/>
   <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\IOHandler.hpp" Name="FileName"/>
+      <int Value="6" Name="FirstVisibleLine"/>
+      <int Value="17" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\IOHandler.cpp" Name="FileName"/>
+      <int Value="12" Name="FirstVisibleLine"/>
+      <int Value="5" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\simpleBST.hpp" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="16" Name="CurrentLine"/>
+      <int Value="3" Name="FirstVisibleLine"/>
+      <int Value="5" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\simpleBST.cpp" Name="FileName"/>
-      <int Value="75" Name="FirstVisibleLine"/>
-      <int Value="140" Name="CurrentLine"/>
+      <int Value="151" Name="FirstVisibleLine"/>
+      <int Value="157" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\complexBST.hpp" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="6" Name="CurrentLine"/>
+      <int Value="9" Name="FirstVisibleLine"/>
+      <int Value="19" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\complexBST.cpp" Name="FileName"/>
-      <int Value="200" Name="FirstVisibleLine"/>
-      <int Value="208" Name="CurrentLine"/>
+      <int Value="124" Name="FirstVisibleLine"/>
+      <int Value="119" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\complexNode.hpp" Name="FileName"/>
-      <int Value="3" Name="FirstVisibleLine"/>
-      <int Value="20" Name="CurrentLine"/>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\MainHandler.hpp" Name="FileName"/>
+      <int Value="15" Name="FirstVisibleLine"/>
+      <int Value="18" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\complexNode.cpp" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="55" Name="CurrentLine"/>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 3\dsAssignment3\dsAssignment3\dsAssignment3\MainHandler.cpp" Name="FileName"/>
+      <int Value="127" Name="FirstVisibleLine"/>
+      <int Value="134" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

@@ -3,22 +3,25 @@
 
 #include <string>
 #include <sstream>
+#include <cstddef>
+#include <stdexcept>
 #include "complexNode.hpp"
 
 class complexBST
 {
     complexNode* root;
-    int[] deleteMin(complexNode*);
+    void deleteMin(int[], complexNode**);
     std::string createList(bool, complexNode*);
 public:
     complexBST();
     ~complexBST();
-    complexNode* getRoot();
-    void insert(int, complexNode*);
-    void Delete(int, complexNode*);
+    complexNode** getRoot();
+    void insert(complexNode**, complexNode*);
+    void Delete(int, bool, complexNode**);
     bool search(int, complexNode*);
     std::string list();
     std::string listSave(complexNode*);
+    void getNode(int[], complexNode**);
 
 };
 

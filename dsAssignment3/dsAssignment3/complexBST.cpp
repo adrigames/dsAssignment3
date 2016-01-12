@@ -9,196 +9,136 @@ complexBST::~complexBST()
 {
 }
 
-int[] complexBST::deleteMin(complexNode* n)
+void complexBST::deleteMin(int result[3], complexNode** n)
 {
-    int aux[3];
-    if(n->getLeftChild() == NULL)
+    if(*(*n)->getLeftChild() == NULL)
     {
-        aux[0] = n->getLabel();
-        aux[1] = n->getPosTimes();
-        aux[2] = n->getNegTimes();
-        n = n->getRightChild();
+        result[0] = (*n)->getLabel();
+        result[1] = (*n)->getPosTimes();
+        result[2] = (*n)->getNegTimes();
+        delete *n;
         }
     else
     {
-        return deleteMin(n->getLeftChild());
+        deleteMin(result, (*n)->getLeftChild());
         }
     }
 
-complexNode* complexBST::getRoot()
+complexNode** complexBST::getRoot()
 {
-    return this->root;
+    return &this->root;
     }
 
 std::string complexBST::createList(bool neg, complexNode* n)
 //This function is used to create strings in a fashion similar to that implemented in the simpleBST class
 {
     std::stringstream stream;
-    if(n->getLeftChild() == NULL && n->getRightChild() == NULL)
+    if(*n->getLeftChild() != NULL)
+        stream<<this->createList(neg, *n->getLeftChild());
+    if(neg)
     {
-        if(neg)
-            if(n->getNegTimes()>0)
-            {
-                stream<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
-                return stream.str();
-            }
-            else return stream.str().clear();       //Return an empty string
-        else
-            if(n->getPosTimes()>0)
-            {
-                stream<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
-                return stream.str();                //Return an empty string
-            }
-            else return "";
+        if(n->getNegTimes()>0)
+            stream<<"\"-\", "<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
         }
-    else if(n->getRightChild() == NULL)
-    {
-        if(neg)
-            if(n->getNegTimes()>0)
-            {
-                stream<<createList(neg, n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n";
-                return stream.str();
-            }
-            else return createList(neg, n->getLeftChild());
-        else
-            if(n->getPosTimes()>0)
-            {
-                stream<<createList(neg, n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
-                return stream.str();
-            }
-            else return createList(neg, n->getLeftChild());
-        }
-    else if(n->getLeftChild() == NULL)
-    {
-        if(neg)
-            if(n->getNegTimes()>0)
-            {
-                stream<<"\"-\""<<n->getLabel()<<", "<<n->getNegTimes()<<" times\n"<<createList(neg, n->getRightChild());
-                return stream.str();
-            }
-            else return createList(neg, n->getRightChild());
-        else
-            if(n->getPosTimes()>0)
-            {
-                stream<<"\"+\""<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n"<<createList(neg, n->getRightChild());
-                return stream.str();
-            }
-            else return createList(neg, n->getRightChild());
-        }
-    else if(n->getLeftChild() != NULL && n->getRightChild() != NULL)
-    {
-        if(neg)
-            if(n->getNegTimes()>0){
-                stream<<createList(neg, n->getLeftChild())<<"\"-\""<<n->getLabel()<<", "\
-                <<n->getNegTimes()<<" times\n"<<createList(neg, n->getRightChild());
-                return stream.str();
-            }
-            else return createList(neg, n->getLeftChild())+createList(neg, n->getRightChild());
-        else
-            if(n->getPosTimes()>0){
-                stream<<createList(neg, n->getLeftChild())<<"\"+\""<<n->getLabel()<<", "\
-                <<n->getPosTimes()<<" times\n"<<createList(neg, n->getRightChild());
-                return stream.str();
-            }
-            else return createList(neg, n->getLeftChild())+createList(neg, n->getRightChild());
-        }
-    }
-
-void complexBST::insert(int value, complexNode* n)
-{
-    bool neg = (value < 0);
-    if(!neg)
-        {
-        if(n == NULL)
-        {
-            n = complexNode(value);
-            }
-        else if(value < n->getLabel())
-        {
-            insert(value, n->getLeftChild());
-            }
-        else if(value > n->getLabel())
-        {
-            insert(value, n->getRightChild());
-            }
-        else if(value == n->getLabel())
-        {
-            n->increasePosTimes();
-            }
-    }
     else
     {
-        if(n == NULL)
-        {
-            n = complexNode(value);
-            }
-        else if(-value < n->getLabel())
-        {
-            insert(value, n->getLeftChild());
-            }
-        else if(-value > n->getLabel())
-        {
-            insert(value, n->getRightChild());
-            }
-        else if(-value == n->getLabel())
-        {
-            n->increaseNegTimes();
-            }
+        if(n->getPosTimes()>0)
+            stream<<"\"+\", "<<n->getLabel()<<", "<<n->getPosTimes()<<" times\n";
         }
+    if(*n->getRightChild() != NULL)
+        stream<<this->createList(neg, *n->getRightChild());
+    return stream.str();
+    }
+
+void complexBST::insert(complexNode** rt, complexNode* n)
+{
+    if(*rt == NULL){
+        *rt = n;
+    }
+    else if(n->getLabel()<(*rt)->getLabel()){
+                this->insert((*rt)->getLeftChild(), n);
+            }
+            else if(n->getLabel()>(*rt)->getLabel()){
+                this->insert((*rt)->getRightChild(), n);
+            }
+            else if(n->getLabel() == (*rt)->getLabel())
+            {
+                if(n->getPosTimes()>0)
+                    (*rt)->increasePosTimes();
+                else if(n->getNegTimes()>0)
+                    (*rt)->increaseNegTimes();
+            }
     }
     
-void complexBST::Delete(int value, bool neg, complexNode* n)
+void complexBST::Delete(int value, bool neg, complexNode** n)
 {
     int aux[3];
     if(!neg)
     {
-        if(n != NULL)
+        if(*n != NULL)
         {
-            if(value < n->getLabel())
+            if(value < (*n)->getLabel())
             {
-                Delete(value, neg, n->getLeftChild());
+                Delete(value, neg, (*n)->getLeftChild());
             }
-            else if(value > n->getLabel())
+            else if(value > (*n)->getLabel())
             {
-                Delete(value, neg, n->getRightChild());
+                Delete(value, neg, (*n)->getRightChild());
             }
-            else if(value == n->getLabel())
+            else if(value == (*n)->getLabel())
             {
-                n->decreasePosTimes();
-                if (n->getPosTimes() <= 0 && n->getNegTimes() <= 0)
+                (*n)->decreasePosTimes();
+                if ((*n)->getPosTimes() <= 0 && (*n)->getNegTimes() <= 0)
                 {
-                    aux = deleteMin(n->getRightChild());
-                    n->setLabel(aux[0]);
-                    n->setPosTimes(aux[1]);
-                    n->setNegTimes(aux[2]);
-                }
-            }
-        }
-        else
-            if(n != NULL)
-        {
-            if(value < n->getLabel())
-            {
-                Delete(value, neg, n->getLeftChild());
-            }
-            else if(value > n->getLabel())
-            {
-                Delete(value, neg, n->getRightChild());
-            }
-            else if(value == n->getLabel())
-            {
-                n->decreaseNegTimes();
-                if (n->getPosTimes() <= 0 && n->getNegTimes() <= 0)
-                {
-                    aux = deleteMin(n->getRightChild());
-                    n->setLabel(aux[0]);
-                    n->setPosTimes(aux[1]);
-                    n->setNegTimes(aux[2]);
+                  if(*(*n)->getRightChild() != NULL){
+                        deleteMin(aux, (*n)->getRightChild());
+                        (*n)->setLabel(aux[0]);
+                        (*n)->setPosTimes(aux[1]);
+                        (*n)->setNegTimes(aux[2]);
+                    }
+                    else
+                    {
+                        complexNode* aux = *n;
+                        *n = NULL;
+                        delete aux;
+                        }
                 }
             }
         }
     }
-}
+        else
+            if(*n != NULL)
+        {
+            if(-value < (*n)->getLabel())
+            {
+                Delete(value, neg, (*n)->getLeftChild());
+            }
+            else if(-value > (*n)->getLabel())
+            {
+                Delete(value, neg, (*n)->getRightChild());
+            }
+            else if(-value == (*n)->getLabel())
+            {
+                (*n)->decreaseNegTimes();
+                if ((*n)->getPosTimes() <= 0 && (*n)->getNegTimes() <= 0)
+                {
+                    if(*(*n)->getRightChild() != NULL){
+                        deleteMin(aux, (*n)->getRightChild());
+                        (*n)->setLabel(aux[0]);
+                        (*n)->setPosTimes(aux[1]);
+                        (*n)->setNegTimes(aux[2]);
+                    }
+                    else
+                    {
+                        complexNode* aux = *n;
+                        *n = NULL;
+                        delete aux;
+                        }
+                }
+            }
+        }
+    }
+
 
 bool complexBST::search(int value, complexNode* n)
 {
@@ -218,19 +158,21 @@ bool complexBST::search(int value, complexNode* n)
         }
     else if(value < n->getLabel())
     {
-        return search(value, n->getLeftChild());
+        return search(value, *n->getLeftChild());
         }
     else if(value > n->getLabel())
     {
-        return search(value, n->getRightChild());
+        return search(value, *n->getRightChild());
         }
+        return false;
     }
 
-std::string complexBST::list(complexNode* n)
+std::string complexBST::list()
 //This function creates the complete list of values along with the times they appeared
 {
-    std::string result = createList(false, n);
-    result += createList(true, n);
+    if (this->root == NULL) throw std::runtime_error("List is empty");
+    std::string result = createList(false, this->root);
+    result += createList(true, this->root);
     return result;
     }
 
@@ -239,14 +181,14 @@ std::string complexBST::listSave(complexNode* n)
 {
     std::stringstream stream;
     int i = 0;
-    if(n->getLeftChild() != NULL)
-        stream<<this->listSave(n->getLeftChild());
+    if(*n->getLeftChild() != NULL)
+        stream<<this->listSave(*n->getLeftChild());
     if(n->getPosTimes()>0)
         {
-            for(i=0; i<=n->getPosTimes();i++)
+            for(i=0; i<n->getPosTimes();i++)
             {
                 stream<<n->getLabel();
-                if(i == n->getPosTimes() && n->getNegTimes() <= 0)
+                if(i == n->getPosTimes()-1 && n->getNegTimes() <= 0)
                     stream<<".\n";
                 else
                     stream<<',';
@@ -254,16 +196,49 @@ std::string complexBST::listSave(complexNode* n)
             }
         if(n->getNegTimes()>0)
         {
-            for(i=0; i<=n->getNegTimes(); i++)
+            for(i=0; i<n->getNegTimes(); i++)
             {
                 stream<<-n->getLabel();
-                if(i == n->getNegTimes())
+                if(i == n->getNegTimes()-1)
                     stream<<".\n";
                 else
                     stream<<',';
                 }
             }
-        if(n->getRightChild() != NULL)
-            stream<<this->listSave(n->getRightChild());
+        if(*n->getRightChild() != NULL)
+            stream<<this->listSave(*n->getRightChild());
         return stream.str();
+    }
+
+void complexBST::getNode(int values[3], complexNode** n)
+{
+    if(this->root == NULL)
+    {
+        values[0] = 0;
+        values[1] = 0;
+        values[2] = 0;
+        complexNode* aux = *n;
+        *n = NULL;
+        delete aux;
+        return;
+        }
+    if(*(*n)->getLeftChild() == NULL && *(*n)->getRightChild() == NULL)
+    {
+        values[0] = (*n)->getLabel();
+        values[1] = (*n)->getPosTimes();
+        values[2] = (*n)->getPosTimes();
+        complexNode* aux = *n;
+        *n = NULL;
+        delete aux;;
+        return;
+        }
+    if(*(*n)->getLeftChild() != NULL)
+    {
+        this->getNode(values, (*n)->getLeftChild());
+        return;
+        }
+    else if(*(*n)->getRightChild() != NULL)
+    {
+        this->getNode(values, (*n)->getRightChild());
+        }
     }
