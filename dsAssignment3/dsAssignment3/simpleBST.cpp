@@ -10,6 +10,8 @@ simpleBST::~simpleBST()
 }
 
 void simpleBST::deleteMin(int values[2], simpleNode** n)
+//This function returns the lowest value node found within the tree.
+//Said node is extracted.
 {
     if(*(*n)->getLeftChild() == NULL)
     {
@@ -32,11 +34,15 @@ void simpleBST::deleteMin(int values[2], simpleNode** n)
     }
 
 simpleNode** simpleBST::getRoot()
+//This function returns a pointer to root's pointer. This is done in order to be able to
+//update the node acting as root.
 {
     return &this->root;
     }
 
 void simpleBST::insert(simpleNode** rt, simpleNode* n)
+//This function tries to locate the right position for the new node.
+//If a node with the same label already exists, its counter is updated, and n is discarded.
 {
     bool neg = (n->getLabel() < 0);
     if(*rt == NULL){
@@ -64,6 +70,8 @@ void simpleBST::insert(simpleNode** rt, simpleNode* n)
     }
     
 void simpleBST::Delete(int value, simpleNode** n)
+//This function searches for a value and decreases its counter.
+//If said counter reaches zero, the node is deleted.
 {
     int aux[2];
     if(*n != NULL)
@@ -97,6 +105,7 @@ void simpleBST::Delete(int value, simpleNode** n)
     }
 
 bool simpleBST::search(int value, simpleNode* n)
+//This function tries to locate a value within the tree.
 {
     if(n == NULL)
     {
@@ -118,6 +127,7 @@ bool simpleBST::search(int value, simpleNode* n)
     }
 
 std::string simpleBST::list(simpleNode* n)
+//This function creats a list with all the values found within the tree.
 {
     if (n == NULL) throw std::runtime_error("List is empty");
     std::stringstream stream;
@@ -134,6 +144,8 @@ std::string simpleBST::list(simpleNode* n)
     }
 
 void simpleBST::getNode(int values[2], simpleNode** n)
+//This function extracts a node from the tree.
+//Only leaves can be extracted.
 {
     if(*n == NULL)
     {
@@ -143,14 +155,11 @@ void simpleBST::getNode(int values[2], simpleNode** n)
     }
     if(*(*n)->getLeftChild() == NULL && *(*n)->getRightChild() == NULL)
     {
-        std::cout<<"Lowest absolute value node located"<<std::endl;
         values[0] = (*n)->getLabel();
         values[1] = (*n)->getTimes();
-        std::cout<<"Data acquired"<<std::endl;
         simpleNode* aux = *n;
         *n = NULL;
         delete aux;
-        std::cout<<"Node taken out"<<std::endl;
         return;
         }
     if(*(*n)->getLeftChild() != NULL){

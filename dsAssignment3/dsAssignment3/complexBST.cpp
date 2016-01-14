@@ -10,6 +10,7 @@ complexBST::~complexBST()
 }
 
 void complexBST::deleteMin(int result[3], complexNode** n)
+//Get minimum node and return it
 {
     if(*(*n)->getLeftChild() == NULL)
     {
@@ -25,6 +26,7 @@ void complexBST::deleteMin(int result[3], complexNode** n)
     }
 
 complexNode** complexBST::getRoot()
+//Get pointer to root's pointer. Done in order to be able to modify root
 {
     return &this->root;
     }
@@ -51,6 +53,8 @@ std::string complexBST::createList(bool neg, complexNode* n)
     }
 
 void complexBST::insert(complexNode** rt, complexNode* n)
+//This function searches for the correct place for the new node.
+//If a node with the same label already exists, its counters will be updated, and n will be discarded.
 {
     if(*rt == NULL){
         *rt = n;
@@ -71,6 +75,9 @@ void complexBST::insert(complexNode** rt, complexNode* n)
     }
     
 void complexBST::Delete(int value, bool neg, complexNode** n)
+//This function tries to locate the node with the label corresponding to the value,
+//and decreases the corresponding count.
+//If both positive and negative count reach zero, the node is erased.
 {
     int aux[3];
     if(!neg)
@@ -141,14 +148,15 @@ void complexBST::Delete(int value, bool neg, complexNode** n)
 
 
 bool complexBST::search(int value, complexNode* n)
+//This function tries to locate a node within the tree.
 {
     bool neg = (value < 0);
     if(neg) value = -value;
-    if(n == NULL)
+    if(n == NULL)           //Value cannot be found
     {
         return false;
         }
-    else if(value == n->getLabel())
+    else if(value == n->getLabel()) //Label found, check sign
     {
         if(neg && n->getNegTimes()>0)
             return true;
@@ -156,11 +164,11 @@ bool complexBST::search(int value, complexNode* n)
             return true;
         else return false;
         }
-    else if(value < n->getLabel())
+    else if(value < n->getLabel())      //Search in left child
     {
         return search(value, *n->getLeftChild());
         }
-    else if(value > n->getLabel())
+    else if(value > n->getLabel())      //Search in right child
     {
         return search(value, *n->getRightChild());
         }
@@ -179,11 +187,11 @@ std::string complexBST::list()
 std::string complexBST::listSave(complexNode* n)
 // Create save string
 {
-    std::stringstream stream;
+    std::stringstream stream;       //String will be built here
     int i = 0;
-    if(*n->getLeftChild() != NULL)
+    if(*n->getLeftChild() != NULL)  //Check for left child's string
         stream<<this->listSave(*n->getLeftChild());
-    if(n->getPosTimes()>0)
+    if(n->getPosTimes()>0)          //Get number of times value has appeared as positive
         {
             for(i=0; i<n->getPosTimes();i++)
             {
@@ -194,7 +202,7 @@ std::string complexBST::listSave(complexNode* n)
                     stream<<',';
                 }
             }
-        if(n->getNegTimes()>0)
+        if(n->getNegTimes()>0)      //Get number of times value has appeared as negative
         {
             for(i=0; i<n->getNegTimes(); i++)
             {
@@ -205,7 +213,7 @@ std::string complexBST::listSave(complexNode* n)
                     stream<<',';
                 }
             }
-        if(*n->getRightChild() != NULL)
+        if(*n->getRightChild() != NULL)     //Get right child's string, if any
             stream<<this->listSave(*n->getRightChild());
         return stream.str();
     }

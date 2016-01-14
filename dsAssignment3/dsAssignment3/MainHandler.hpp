@@ -10,6 +10,9 @@
 #include <limits>
 #include <exception>
 #include <stdexcept>
+#include <cstdio>
+#include <ctime>
+#include <cmath>
 
 class MainHandler
 {

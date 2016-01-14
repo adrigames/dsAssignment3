@@ -95,6 +95,8 @@ void MainHandler::processnumber()
 
 void MainHandler::list()
 {
+    clock_t c1, c2;
+    c1 = clock();
     if(complexOrg)
     {
         try{
@@ -115,6 +117,16 @@ void MainHandler::list()
         {
             }
         }
+    c2 = clock();
+    long elapsed_time = ((double)(c2-c1)/CLOCKS_PER_SEC)*1000;
+    int hours = floor(elapsed_time/(3600*1000));
+    elapsed_time -= hours*3600*1000;
+    int minutes = floor(elapsed_time/(60000));
+    elapsed_time -= minutes*60000;
+    int seconds = floor(elapsed_time/1000);
+    elapsed_time -= seconds*1000;
+    int milliseconds = elapsed_time;
+    printf("Elapsed time: %2i:%2i:%2i.%3i\n", hours, minutes, seconds, milliseconds);
     }
 
 void MainHandler::extract()
@@ -151,7 +163,6 @@ void MainHandler::changeOrganization()
 {
     if(complexOrg)
     {
-        std::cout<<"Complex->simple"<<std::endl;
         while(*this->complex->getRoot() != NULL)
         {
             int values[3];
@@ -169,16 +180,12 @@ void MainHandler::changeOrganization()
     {
         int values[2];
         int i = 0;
-        std::cout<<"Simple->complex"<<std::endl;
-        std::cout<<*this->positive->getRoot()<<std::endl;
         while(*this->positive->getRoot() != NULL)
         {
             this->positive->getNode(values, this->positive->getRoot());
-            std::cout<<values[1]<<std::endl;
             if(values[1] != 0)
                 for(i=0; i<values[1]; i++)
                 {
-                    std::cout<<"Copying data..."<<std::endl;
                     io->processNumber(values[0], true);
                 }
             }
@@ -188,7 +195,6 @@ void MainHandler::changeOrganization()
             if(values[1] != 0)
                 for(i=0; i<values[1]; i++)
                 {
-                    std::cout<<"Copying data..."<<std::endl;
                     io->processNumber(values[0], true);
                 }
             }
